@@ -8,7 +8,8 @@ ENV UNIFI_VERSION=${UNIFI_VERSION}
 ARG UNIFI_UID
 ENV UNIFI_UID=${UNIFI_UID}
 
-ENV JVM_MAX_HEAP_SIZE
+ARG JVM_MAX_HEAP_SIZE=1024m
+ENV JVM_MAX_HEAP_SIZE=${JVM_MAX_HEAP_SIZE}
 
 RUN dnf -y update && \
     dnf install -y java-1.8.0-openjdk mongodb-server wget unzip && \

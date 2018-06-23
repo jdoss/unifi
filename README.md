@@ -5,7 +5,7 @@
 ### Prerequisites 
 
 ```
-$ sudo dnf install podman
+$ sudo dnf install podman git -y
 $ sudo adduser -r -s /sbin/nologin unifi 
 $ sudo mkdir -p /opt/unifi/{data,logs,run}
 $ sudo chown -R unifi. /opt/unifi
