@@ -26,7 +26,7 @@ RUN chown -R ${UNIFI_UID}:${UNIFI_UID} /opt/unifi && chmod +x /opt/unifi/unifi
 
 USER ${UNIFI_UID}
 
-EXPOSE 8080/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp 6789/tcp 10001/udp
+EXPOSE 3478/udp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp 6789/tcp 10001/udp
 
 VOLUME ["/opt/unifi/data", "/opt/unifi/logs", "/opt/unifi/run"]
 
