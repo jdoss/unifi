@@ -20,9 +20,11 @@ $ sudo systemctl disable firewalld
 
 ### Build From GitHub
 
+```
 sudo podman build --build-arg UNIFI_VERSION=5.8.23-d5a5bbfda4 \
     --build-arg UNIFI_UID=$(id -u unifi) \
     -t unifi:5.8.23-d5a5bbfda4 git://github.com/jdoss/unifi
+```
 
 ### Build Locally
 
@@ -33,6 +35,7 @@ $ sudo podman build --build-arg UNIFI_VERSION=5.8.23-d5a5bbfda4 \
     --build-arg UNIFI_UID=$(id -u unifi) \
     -t unifi:5.8.23-d5a5bbfda4 .
 ```
+
 ### Run the Ubiquiti Networks Unifi Controller
 
 ```
