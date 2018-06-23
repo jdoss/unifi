@@ -1,6 +1,10 @@
 # Ubiquiti Networks Unifi Controller
 
+[![Docker Repository on Quay](https://quay.io/repository/jdoss/unifi/status "Docker Repository on Quay")](https://quay.io/repository/jdoss/unifi)
+
 ## Usage
+
+This is a repo for building and running a Fedora based container for the Ubiquiti Networks Unifi Controller with [Podman](https://github.com/projectatomic/libpod).
 
 ### Prerequisites 
 
