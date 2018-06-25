@@ -16,8 +16,10 @@ $ sudo chown -R unifi. /opt/unifi
 $ sudo chcon -Rt svirt_sandbox_file_t /opt/unifi/
 $ sudo firewall-cmd --zone=$(firewall-cmd --get-default-zone) --add-port=3478/udp --add-port=8080/tcp --add-port=8443/tcp --add-port=8843/tcp --add-port=10001/udp
 $ sudo firewall-cmd --runtime-to-permanent
+```
 
-# Disable firewalld until this [bug](https://github.com/projectatomic/libpod/issues/348) gets resolved.
+#### Disable firewalld until this [bug](https://github.com/projectatomic/libpod/issues/348) gets resolved.
+```
 $ sudo systemctl stop firewalld
 $ sudo systemctl disable firewalld
 ```
