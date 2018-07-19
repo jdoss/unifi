@@ -27,9 +27,9 @@ $ sudo systemctl disable firewalld
 ### Build From GitHub
 
 ```
-sudo podman build --build-arg UNIFI_VERSION=5.8.23-d5a5bbfda4 \
+sudo podman build --build-arg UNIFI_VERSION=5.8.25-34502471b9 \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.8.23-d5a5bbfda4 git://github.com/jdoss/unifi
+    -t unifi:5.8.25-d5a5bbfda4 git://github.com/jdoss/unifi
 ```
 
 ### Build Locally
@@ -37,23 +37,23 @@ sudo podman build --build-arg UNIFI_VERSION=5.8.23-d5a5bbfda4 \
 ```
 $ git clone https://github.com/jdoss/unifi
 $ cd unifi
-$ sudo podman build --build-arg UNIFI_VERSION=5.8.23-d5a5bbfda4 \
+$ sudo podman build --build-arg UNIFI_VERSION=5.8.25-34502471b9 \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.8.23-d5a5bbfda4 .
+    -t unifi:5.8.25-34502471b9 . 
 ```
 
-### Run the Ubiquiti Networks Unifi Controller
+### Run the Ubiquiti Networks Unifi Controller 
 
 ```
-sudo podman run --rm --cap-drop ALL -e UNIFI_UID=$(id -u unifi) \
-  -e UNIFI_VERSION=5.8.23-d5a5bbfda4 \
+$ sudo podman run --rm --cap-drop ALL -e UNIFI_UID=$(id -u unifi) \
+  -e UNIFI_VERSION=5.8.25-34502471b9 \
   -e JVM_MAX_HEAP_SIZE=1024m \
   -e TZ='America/Chicago' \
   -p 3478:3478/udp -p 8080:8080/tcp -p 8443:8443/tcp -p 8843:8843/tcp -p 10001:10001/udp \
   -v /opt/unifi/data:/opt/unifi/data:Z \
   -v /opt/unifi/logs:/opt/unifi/logs:Z \
   -v /opt/unifi/run:/opt/unifi/run:Z \
-  --name unifi localhost/unifi:5.8.23-d5a5bbfda4
+  --name unifi localhost/unifi:5.8.25-d5a5bbfda4
 ```
 
 ## License
