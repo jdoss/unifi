@@ -2,15 +2,13 @@
 
 [![Docker Repository on Quay](https://quay.io/repository/jdoss/unifi/status "Docker Repository on Quay")](https://quay.io/repository/jdoss/unifi)
 
-## Usage
-
 This is a repo for building and running a Fedora based container for the Ubiquiti Networks Unifi Controller with [Podman](https://github.com/projectatomic/libpod).
 
-### Prerequisites 
+### Prerequisites
 
 ```
 $ sudo dnf install podman git -y
-$ sudo adduser -r -s /sbin/nologin unifi 
+$ sudo adduser -r -s /sbin/nologin unifi
 $ sudo mkdir -p /opt/unifi/{data,logs,run}
 $ sudo chown -R unifi. /opt/unifi
 $ sudo chcon -Rt svirt_sandbox_file_t /opt/unifi/
@@ -27,9 +25,9 @@ $ sudo systemctl disable firewalld
 ### Build From GitHub
 
 ```
-sudo podman build --build-arg UNIFI_VERSION=5.8.25-34502471b9 \
+sudo podman build --build-arg UNIFI_VERSION=5.9.32-016da0b7c1 \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.8.25-d5a5bbfda4 git://github.com/jdoss/unifi
+    -t unifi:5.9.32-016da0b7c1 git://github.com/jdoss/unifi
 ```
 
 ### Build Locally
@@ -37,23 +35,23 @@ sudo podman build --build-arg UNIFI_VERSION=5.8.25-34502471b9 \
 ```
 $ git clone https://github.com/jdoss/unifi
 $ cd unifi
-$ sudo podman build --build-arg UNIFI_VERSION=5.8.25-34502471b9 \
+$ sudo podman build --build-arg UNIFI_VERSION=5.9.32-016da0b7c1 \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.8.25-34502471b9 . 
+    -t unifi:5.9.32-016da0b7c1 .
 ```
 
 ### Run the Ubiquiti Networks Unifi Controller 
 
 ```
-$ sudo podman run --rm --cap-drop ALL -e UNIFI_UID=$(id -u unifi) \
-  -e UNIFI_VERSION=5.8.25-34502471b9 \
+sudo podman run -d --cap-drop ALL -e UNIFI_UID=$(id -u unifi) \
+  -e UNIFI_VERSION=5.9.32-016da0b7c1 \
   -e JVM_MAX_HEAP_SIZE=1024m \
   -e TZ='America/Chicago' \
   -p 3478:3478/udp -p 8080:8080/tcp -p 8443:8443/tcp -p 8843:8843/tcp -p 10001:10001/udp \
   -v /opt/unifi/data:/opt/unifi/data:Z \
   -v /opt/unifi/logs:/opt/unifi/logs:Z \
   -v /opt/unifi/run:/opt/unifi/run:Z \
-  --name unifi localhost/unifi:5.8.25-d5a5bbfda4
+  --name unifi localhost/unifi:5.9.32-016da0b7c1
 ```
 
 ## License
