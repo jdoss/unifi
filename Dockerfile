@@ -1,8 +1,8 @@
-FROM fedora:27
+FROM fedora:latest
 
 MAINTAINER "Joe Doss <joe@solidadmin.com>"
 
-ARG UNIFI_VERSION=5.10.5-6ba4d1bfe5
+ARG UNIFI_VERSION=5.10.17
 ENV UNIFI_VERSION=${UNIFI_VERSION}
 
 ARG UNIFI_UID=1000
@@ -12,7 +12,8 @@ ARG JVM_MAX_HEAP_SIZE=1024m
 ENV JVM_MAX_HEAP_SIZE=${JVM_MAX_HEAP_SIZE}
 
 RUN dnf -y update && \
-    dnf install -y java-1.8.0-openjdk mongodb-server wget unzip && \
+    dnf install -y java-1.8.0-openjdk wget unzip && \
+    dnf install -y https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/RPMS/mongodb-org-server-3.4.9-1.el7.x86_64.rpm && \
     dnf clean all -y
 
 RUN wget https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip -O /tmp/UniFi.unix.zip && \
