@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM registry.fedoraproject.org/fedora:latest
 
 MAINTAINER "Joe Doss <joe@solidadmin.com>"
 
