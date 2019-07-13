@@ -1,4 +1,5 @@
 #!/bin/bash -e
 
-cd /opt/unifi
+: ${JVM_MAX_HEAP_SIZE:=1024m}
+
 exec /usr/bin/java -Xmx${JVM_MAX_HEAP_SIZE} -Djava.awt.headless=true -Dfile.encoding=UTF-8 -jar /opt/unifi/lib/ace.jar start
