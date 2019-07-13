@@ -22,15 +22,19 @@ sudo firewall-cmd --zone=$(firewall-cmd --get-default-zone) --add-port=3478/udp 
 sudo firewall-cmd --runtime-to-permanent
 ```
 
-### Use Premade Container
+### Quick Start
 
 ```
-sudo podman build --build-arg UNIFI_VERSION=5.11.31-ad89aa3621 \
-    --build-arg UNIFI_SHA256=0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9 \
-    --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.11.31-ad89aa3621 git://github.com/jdoss/unifi
+sudo podman run -d --cap-drop ALL \
+  -e UNIFI_UID=$(id -u unifi) \
+  -e JVM_MAX_HEAP_SIZE=1024m \
+  -e TZ='America/Chicago' \
+  -p 3478:3478/udp -p 8080:8080/tcp -p 8443:8443/tcp -p 8843:8843/tcp -p 10001:10001/udp \
+  -v /opt/unifi/data:/opt/unifi/data:Z \
+  -v /opt/unifi/logs:/opt/unifi/logs:Z \
+  -v /opt/unifi/run:/opt/unifi/run:Z \
+  --name unifi quay.io/jdoss/unifi:5.11.31-ad89aa3621
 ```
-
 
 ### Build From GitHub
 
