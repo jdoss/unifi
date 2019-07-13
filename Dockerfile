@@ -7,6 +7,7 @@ ARG UNIFI_SHA256=0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe
 ENV UNIFI_VERSION=${UNIFI_VERSION}
 ENV UNIFI_SHA256=${UNIFI_SHA256}
 
+ARG UNIFI_UID=271
 ENV UNIFI_UID=${UNIFI_UID}
 
 ARG JVM_MAX_HEAP_SIZE=1024m
@@ -17,7 +18,8 @@ RUN dnf -y update && \
     dnf install -y https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/RPMS/mongodb-org-server-3.4.9-1.el7.x86_64.rpm && \
     dnf clean all -y
 
-RUN curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
+RUN adduser -r -s /sbin/nologin -d /opt/unifi -u 271 -U unifi && \
+    curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
         { UNIFI_FILE_DOWNLOAD="$(mktemp --suffix=-unifi-"${UNIFI_VERSION}")"; \
         trap "rm -f '${UNIFI_FILE_DOWNLOAD}'" INT TERM EXIT; cat >| "${UNIFI_FILE_DOWNLOAD}"; \
         sha256sum --quiet -c <<<"${UNIFI_SHA256} ${UNIFI_FILE_DOWNLOAD}" \
@@ -27,7 +29,7 @@ RUN curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
 
 COPY unifi /opt/unifi/unifi
 
-RUN chmod +x /opt/unifi/unifi
+RUN chown -R {UNIFI_UID}:${UNIFI_UID} /opt/unifi && chmod +x /opt/unifi/unifi
 
 USER ${UNIFI_UID}
 
