@@ -4,9 +4,9 @@
 
 This is a repo for building and running a Fedora based container for the Ubiquiti Networks Unifi Controller with [Podman](https://github.com/containers/libpod).
 
-**Version:** 5.11.31-ad89aa3621
-**SHA256:**  0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9
-**Unifi Forum URL:** https://community.ui.com/releases/UniFi-Network-Controller-5-11-31/c7f8a8a0-0414-4324-a567-1f2b3cb6affa
+- **Version:** 5.11.31-ad89aa3621
+- **SHA256:**  0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9
+- **Unifi Forum URL:** https://community.ui.com/releases/UniFi-Network-Controller-5-11-31/c7f8a8a0-0414-4324-a567-1f2b3cb6affa
 
 _You need to register for the beta forums to access the above Unifi Forum URL._
 
