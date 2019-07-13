@@ -7,7 +7,6 @@ ARG UNIFI_SHA256=0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe
 ENV UNIFI_VERSION=${UNIFI_VERSION}
 ENV UNIFI_SHA256=${UNIFI_SHA256}
 
-ARG UNIFI_UID=1000
 ENV UNIFI_UID=${UNIFI_UID}
 
 ARG JVM_MAX_HEAP_SIZE=1024m
@@ -28,7 +27,7 @@ RUN curl -LS https://dl.ubnt.com/unifi/${UNIFI_VERSION}/UniFi.unix.zip | \
 
 COPY unifi /opt/unifi/unifi
 
-RUN chown -R ${UNIFI_UID}:${UNIFI_UID} /opt/unifi && chmod +x /opt/unifi/unifi
+RUN chmod +x /opt/unifi/unifi
 
 USER ${UNIFI_UID}
 
