@@ -8,13 +8,13 @@ This is a repo for building and running a Fedora based container for the Ubiquit
 **SHA256:**  0d6a68f71e5c83f33ee89dc95279487ad505c0119b5c7166bbf7431b1a0b7fe9
 **Unifi Forum URL:** https://community.ui.com/releases/UniFi-Network-Controller-5-11-31/c7f8a8a0-0414-4324-a567-1f2b3cb6affa
 
-_You need to register for the beta forums to access the above URL._
+_You need to register for the beta forums to access the above Unifi Forum URL._
 
 ### Prerequisites
 
 ```
 sudo dnf install podman git -y
-sudo adduser -r -s /sbin/nologin unifi
+sudo adduser -r -s /sbin/nologin -d /opt/unifi -u 271 -U unifi
 sudo mkdir -p /opt/unifi/{data,logs,run}
 sudo chown -R unifi. /opt/unifi
 sudo chcon -Rt svirt_sandbox_file_t /opt/unifi/
