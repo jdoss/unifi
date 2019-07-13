@@ -1,8 +1,8 @@
-FROM fedora:latest
+FROM registry.fedoraproject.org/fedora:latest
 
 MAINTAINER "Joe Doss <joe@solidadmin.com>"
 
-ARG UNIFI_VERSION=5.10.17
+ARG UNIFI_VERSION=5.11.26-1ecdee774d
 ENV UNIFI_VERSION=${UNIFI_VERSION}
 
 ARG UNIFI_UID=1000

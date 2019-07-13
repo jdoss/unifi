@@ -25,9 +25,9 @@ sudo systemctl disable firewalld
 ### Build From GitHub
 
 ```
-sudo podman build --build-arg UNIFI_VERSION=5.10.17 \
+sudo podman build --build-arg UNIFI_VERSION=5.11.26-1ecdee774d \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.10.17 git://github.com/jdoss/unifi
+    -t unifi:5.11.26-1ecdee774d git://github.com/jdoss/unifi
 ```
 
 ### Build Locally
@@ -35,30 +35,30 @@ sudo podman build --build-arg UNIFI_VERSION=5.10.17 \
 ```
 git clone https://github.com/jdoss/unifi
 cd unifi
-sudo podman build --build-arg UNIFI_VERSION=5.10.17 \
+sudo podman build --build-arg UNIFI_VERSION=5.11.26-1ecdee774d \
     --build-arg UNIFI_UID=$(id -u unifi) \
-    -t unifi:5.10.17 .
+    -t unifi:5.11.26-1ecdee774d .
 ```
 
 ### Run the Ubiquiti Networks Unifi Controller
 
 ```
 sudo podman run -d --cap-drop ALL -e UNIFI_UID=$(id -u unifi) \
-  -e UNIFI_VERSION=5.10.17 \
+  -e UNIFI_VERSION=5.11.26-1ecdee774d \
   -e JVM_MAX_HEAP_SIZE=1024m \
   -e TZ='America/Chicago' \
   -p 3478:3478/udp -p 8080:8080/tcp -p 8443:8443/tcp -p 8843:8843/tcp -p 10001:10001/udp \
   -v /opt/unifi/data:/opt/unifi/data:Z \
   -v /opt/unifi/logs:/opt/unifi/logs:Z \
   -v /opt/unifi/run:/opt/unifi/run:Z \
-  --name unifi localhost/unifi:5.10.17
+  --name unifi localhost/unifi:5.11.26-1ecdee774d
 ```
 
 ## License
 
 The MIT License
 
-Copyright (c) 2018 Joe Doss
+Copyright (c) 2019 Joe Doss
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
