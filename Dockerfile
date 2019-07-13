@@ -29,7 +29,7 @@ RUN adduser -r -s /sbin/nologin -d /opt/unifi -u 271 -U unifi && \
 
 COPY unifi /opt/unifi/unifi
 
-RUN chown -R {UNIFI_UID}:${UNIFI_UID} /opt/unifi && chmod +x /opt/unifi/unifi
+RUN chown -R ${UNIFI_UID}:${UNIFI_UID} /opt/unifi && chmod +x /opt/unifi/unifi
 
 USER ${UNIFI_UID}
 EXPOSE 3478/udp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp 6789/tcp 10001/udp
